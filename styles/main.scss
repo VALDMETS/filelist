@@ -5,33 +5,66 @@ body {
 }
 .filebox {
   width: 400px;
-  border: 3px solid black;
+  border: 2px solid #434343;
   position: fixed;
   bottom: 0;
   right: 0;
 }
 .filehead {
+  position: relative;
   box-sizing: border-box;
   width: 100%;
-  background-color: blue;
-  padding: 0;
-  border: 1px solid purple;
+  padding-top: 5px;
+
+  background: linear-gradient(#6A6C72, #4B4D51);
   color: white;
+
 }
 .counter {
   display: inline-block;
-  float:right;
+  float: right;
+  padding: 3px 10px;
+  font-size: 12px;
+  margin-right: 3px;
+  border-radius: 15px;
+  background-color: #404247;
 }
-.filehead.active {
-  background-color: green;
+.filebox ol .counter {
+  margin-top: 5px;
+  color: #83807C;
+  background-color: #E5E5E5;
+  border: 1px solid gray;
+}
+.active {
+  background: linear-gradient(#A3CB4D, #6B901A);
+  color: #3E5706;
+  .counter {
+    background-color: #3E5706;
+    color: white;
+  }
 }
 ol {
-  background-color: gray;
+  background-color: #E5E5E5;
   margin: 0;
 }
-li {
+.filehead li {
+  padding-top: 5px;
   display: inline-block;
-  background-color: gray;
   height: 30px;
   width: 80%;
+  color: #83807C;
+}
+.filehead li::after {
+  content: '';
+  display: block;
+  height: 6px;
+  background-color: #E5E5E5;
+  width: 400px;
+  position: absolute;
+  left: 0px;
+  border-bottom: 1px solid #83807C;
+}
+i {
+  letter-spacing: 10px;
+  padding: 0 0 5px 10px;
 }
