@@ -1,35 +1,53 @@
-var files = [
-  {title: 'Dropbox', amount: 42},
-  {title: 'Skydrive', amount: 87},
-  {title: 'FTP Server', amount: 366},
-  {title: 'Dropbox', amount: 1},
-  {title: 'Skydrive', amount: 10},
-];
+var fullInfo =
 
-var mail = [
-  {title: 'Work', amount: 12},
-  {title: 'Mom', amount: 3},
-  {title: 'The Band', amount: 7},
-  {title: 'Wife', amount: 4},
-];
+{files: [
+  {title: 'Dropbox', amt: 42},
+  {title: 'Skydrive', amt: 87},
+  {title: 'FTP Server', amt: 366},
+  {title: 'Dropbox', amt: 1},
+  {title: 'Skydrive', amt: 10},
+] ,
 
-var cloud = [
-  {title: 'Connect', amount: 15},
-  {title: 'Profiles', amount: 23},
-  {title: 'Pictures', amount: 45},
-  {title: 'Music', amount: 82},
-  {title: 'Videos', amount: 4},
-  {title: 'Documents', amount: 95},
-];
+mail: [
+  {title: 'Work', amt: 12},
+  {title: 'Mom', amt: 3},
+  {title: 'The Band', amt: 7},
+  {title: 'Wife', amt: 4},
+] ,
 
+cloud: [
+  {title: 'Connect', amt: 15},
+  {title: 'Profiles', amt: 23},
+  {title: 'Pictures', amt: 45},
+  {title: 'Music', amt: 82},
+  {title: 'Videos', amt: 4},
+  {title: 'Documents', amt: 95},
+] };
+console.log(fullInfo);
+var alreadyOpen = {files: 0, mail: 0, cloud: 0};
 var $sectionSelect = $('.filehead');
-var $ol = ('<ol>wowwee</ol>');
-console.log($sectionSelect);
+var $ol = ('<ol class="openMenu"></ol>');
+// console.log($sectionSelect);
 
 $sectionSelect.click(function(e){
   $sectionSelect.removeClass('active');
-  $(e.target).addClass('active');
-  $(e.target).append($ol);
-
-
+  $(this).addClass('active');
+  var titler = String(e.target.id);
+  var menuSpot = '#' + titler + 'Menu';
+  console.log(menuSpot);
+  if (alreadyOpen[titler] === 0) {
+    // $(this).append($ol);
+    console.log(titler);
+    console.log(fullInfo[titler]);
+      for (var i = 0; i < fullInfo[titler].length; i++) {
+        var liName = fullInfo[titler][i].title;
+        var liAmt = fullInfo[titler][i].amt;
+        var $li = $('<li>' + liName + '</li><div class="counter">' + liAmt + '</div>');
+        $(menuSpot).append($li);
+      }
+  alreadyOpen[titler] = 1;
+  } else {
+    document.querySelector(menuSpot).innerHTML = '';
+    alreadyOpen[titler] = 0;
+  }
 });
